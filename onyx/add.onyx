@@ -1,0 +1,7 @@
+use core {*}
+
+#export "add" (x, y: i32) -> i32 {
+  return x + y;
+}
+
+main :: () {}

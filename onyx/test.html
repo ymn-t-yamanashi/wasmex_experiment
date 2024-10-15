@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Onyx</h1>
+
+  <script>
+    WebAssembly.instantiateStreaming(fetch('add.wasm'),
+    {
+      // ここは必須
+      host: {
+        print_str: () => {},
+        time: () => {},
+      },
+    }).then(
+      (obj) => {
+        // ここに処理を書く
+        console.log(obj.instance.exports.add(10, 20));
+      }
+    )
+  </script>
+</body>
+</html>

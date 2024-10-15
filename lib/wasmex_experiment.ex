@@ -3,16 +3,13 @@ defmodule WasmexExperiment do
   Documentation for `WasmexExperiment`.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> WasmexExperiment.hello()
-      :world
-
-  """
   def hello do
+    {:ok, bytes} = File.read("./hoge_wasm/target/wasm32-unknown-unknown/debug/hoge_wasm.wasm")
+    {:ok, module} = Wasmex.Module.compile(bytes)
+    {:ok, instance} = Wasmex.start_link(%{module: module})
+    Wasmex.call_function(instance, "hoge", [10])
+    |> IO.inspect()
+
     :world
   end
 end

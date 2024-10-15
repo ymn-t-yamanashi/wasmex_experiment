@@ -1,0 +1,10 @@
+use core { printf, iter }
+
+main :: () {
+    printf("onyx");
+}
+
+factorial :: (n: i32) -> i32 {
+    return iter.as_iter(1 .. n)
+        |> iter.fold(1, (x, y) => x * y)
+}
